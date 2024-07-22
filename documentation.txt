@@ -1,0 +1,201 @@
+Data Visualization and Analysis Program
+
+This program is developed by CKEngineer
+
+A Python program that provides various functions for loading, filtering, analyzing and visualizing data. This program uses the Tkinter library to create a GUI (Graphical User Interface) that enables user interaction. It also uses pandas and matplotlib libraries for processing and visualizing data.
+
+Libraries:
+Tkinter (filedialog,ttk,messagebox)
+Pandas
+Matplotlib
+Mplcursor
+
+Main Variables:
+"df": Pandas DataFrame that holds the loaded data.
+"filtered_df": Pandas DataFrame that holds the filtered data.
+
+Interface
+Interface(GUI) is created via tkinter and presents user many features such as loading data,cleaning data,filtering data, visualizing data and so on
+
+
+Functions:
+
+ANALYZING
+analyze_data()
+
+The analyze_data function is designed to perform data analysis on a filtered DataFrame (filtered_df) and display the results in a new window using a GUI created with Tkinter. The function creates a separate window with a tabbed interface (using ttk.Notebook) to display various analyses of the data.
+
+*Creating a New Window
+*Tabbed Interface through ttk.Notebook,creates tabs,browser tab experience
+(Tabs:"First 5 Rows", "Summary Statistics", "Detailed Stats", and "Column Names".)
+*Scrollable Canvas
+*First 5 Rows of data showed in windows via df.head()
+*Displayed summary statistics through df.describe() method
+*Displaying Detailed Statistics:
+This tab provides more detailed summary statistics for numeric columns, including:
+Mean,Median,Mode,Standard Deviation,Variance,Minimum and Maximum values,25th, 50th (Median), and 75th Percentiles
+*Displays Column Names
+Most of feature is done through tk.label
+
+
+
+CLEANING AND TRANSFORMING DATA
+clean_and_transform_function()
+
+The clean_and_transform_function provides a graphical user interface (GUI) for performing various data cleaning and transformation operations on a DataFrame (df). This function allows users to select specific operations, choose applicable columns, and input necessary values or data types for transformations. It integrates Tkinter for the GUI components and Pandas for data manipulation.
+
+*Creating a New Window:
+*Operation Selection:Clean Data,Fill Missing Values,Remove Duplicates,Change Data Type,Rename Column,Add New Column,Manipulate Column
+*Column Selection:
+*Value/Data Type/New Name
+*Apply->apply_combined_function()
+*Save Data function
+*Error Handling
+
+
+
+
+DATA OPERATIONS
+load_data()
+Loads the CSV file and displays it in Treeview. via filedialog
+The load_data function allows the user to load a CSV file into a global DataFrame (df). It uses a file dialog to select the CSV file and reads it into a DataFrame using Pandas. The data is then displayed using the display_data function.
+*Opens a file dialog to select a CSV file.
+*Reads the selected CSV file into a Pandas DataFrame.
+*Displays the data in a Tkinter Treeview widget.
+*Handles errors and displays an error message if loading fails.
+display_data()
+The display_data function takes a Tkinter Treeview widget and a Pandas DataFrame as inputs and populates the Treeview with the DataFrame's data. It clears any previous data from the Treeview before inserting new data.
+*Load Data: Call load_data() to open a file dialog, load a CSV file into a DataFrame, and display it.
+*Display Data: Call display_data(tree, df) where tree is a Tkinter Treeview widget and df is the DataFrame to be displayed.
+
+
+
+
+FILTER OPERATIONS
+filter_data()
+Filters data and shows the filtered data in a new window
+The filter_data function creates a GUI window for filtering a Pandas DataFrame (df). Users can select a column, condition, and value to filter the data. The filtered data is then displayed using the display_filtered_data function.
+*Opens a new window for filtering data.
+*Allows selection of a column, condition (e.g., >, <, ==), and value.
+*Filters the data based on the user's inputs.
+*Displays the filtered data in a new window.
+->apply_filterAux function in filter data
+
+display_filtered_data()
+The display_filtered_data function creates a GUI window to display the filtered DataFrame using a Tkinter Treeview widget. It includes scrollbars and a button to save the filtered data.
+*Displays the filtered DataFrame in a new window.
+*Uses Treeview for displaying the data.
+*Includes vertical and horizontal scrollbars.
+*Provides a button to save the filtered data.
+
+
+save_filtered_data()
+Saves the new filtered data in CSV format.The save_filtered_data function saves the filtered DataFrame to a CSV file using a file dialog. It prompts the user to specify the file path and name.
+*Prompts the user to specify a file path and name for saving the filtered data.
+*Saves the filtered DataFrame to a CSV file.
+*Displays a confirmation message upon successful saving.
+
+
+
+HELPERS
+add_scrollbars()
+The add_scrollbars function adds vertical and horizontal scrollbars to a specified widget within a given frame. This function is useful for ensuring that widgets like Treeview can handle large amounts of data that may not fit within the initial viewable area.
+*Adds vertical and horizontal scrollbars to a widget.
+*Configures the widget to use the scrollbars.
+*Handles errors and displays an error message if adding scrollbars fails.
+*Adds scrool bar feature to the program.
+
+save_data()
+The save_data function prompts the user to specify a file path and name for saving a Pandas DataFrame (par_dataframe) as a CSV file. It uses a file dialog to get the file path and saves the DataFrame, displaying a confirmation message upon success.
+*Prompts the user to specify a file path and name for saving the data.
+*Saves the DataFrame as a CSV file.
+*Displays a confirmation message upon successful saving.
+
+save_filtered_data()
+The save_filtered_data function works similarly to save_data, but it is specifically used for saving a filtered DataFrame (filtered_df). It prompts the user to specify a file path and name, saves the filtered DataFrame as a CSV file, and displays a confirmation message.
+*Prompts the user to specify a file path and name for saving the filtered data.
+*Saves the filtered DataFrame as a CSV file.
+*Displays a confirmation message upon successful saving.
+*Handles errors and displays an error message if saving fails.
+
+
+JOIN
+join_data()
+The join_data function initiates the process of joining data by opening a new window where the user can select a CSV file to join with the existing DataFrame (df).
+*Opens a new window titled "Join Data".
+*Provides a button for selecting another CSV file to join.
+
+load_join_file()
+The load_join_file function handles the file selection process. It allows the user to choose a CSV file, reads it into a DataFrame (join_df), and opens another window to configure join options.
+*Opens a file dialog for selecting a CSV file.
+*Reads the selected CSV file into a DataFrame (join_df).
+*Opens a new window to select the join key and join type.
+
+apply_join()
+The apply_join function performs the actual join operation between the existing DataFrame (df) and the newly loaded DataFrame (join_df). It uses the specified join key and join type to merge the data and then displays the resulting DataFrame.
+*Retrieves the selected join key and join type.
+*Merges the two DataFrames based on the specified join key and join type.
+*Displays the joined DataFrame.
+*Closes the join configuration window after the join operation.
+
+
+
+
+PROJECT COLUMNS
+project_columns()
+The project_columns function initiates the column projection process by opening a new window where the user can specify which columns to select from the existing DataFrame (df).
+*Opens a new window titled "Project Columns".
+*Provides an entry field for the user to specify the columns they want to select, separated by commas.
+*Calls the apply_projection function to apply the column selection and display the result.
+apply_projection()
+The apply_projection function is a helper function that extracts the specified columns from the DataFrame and displays the result. It is called when the user clicks the "Apply Projection" button.
+*Retrieves the column names specified by the user.
+*Projects (selects) the specified columns from the existing DataFrame (df).
+*Displays the resulting DataFrame with the selected columns.
+*Closes the projection window after applying the projection.
+
+
+
+SORT AND GROUPBY
+sort_data()
+This function provides the user with the option to sort the DataFrame by a specific column.
+*Creates a new window (sort_window).
+*Allows the user to select a column to sort by.
+*Allows the user to select the sort order (ascending/descending).
+*When the "Apply Sort" button is pressed, sorts the DataFrame by the selected column and displays the results using the display_filtered_data() function.
+groupby_data()
+This function provides the user with the option to group the DataFrame by a specific column and apply various aggregation functions.
+*Creates a new window (groupby_window).
+*Allows the user to select a column to group by.
+*Allows the user to select an aggregation function (sum, mean, min, max, count).
+*When the "Apply Group By" button is pressed, groups the DataFrame by the selected column and applies the aggregation function, displaying the results using the display_filtered_data() function.
+
+
+
+VISUALIZATION
+plot_data()
+Creates a visualization Show in a new window
+plot_data()
+This function allows users to create a plot based on the filtered DataFrame. It provides options to customize various aspects of the plot.
+Workflow:
+Opens a new window (plot_window) for plot configuration.
+Provides options to select:
+X Axis Column
+Y Axis Column
+Plot Type (e.g., line, bar, scatter, etc.)
+Plot Title
+X and Y Labels
+Color
+Line Style
+Marker Style
+When the "Create Plot" button is pressed, generates the plot according to the specified parameters and displays it using Matplotlib.
+->apply_plot()
+
+
+
+HELP
+show_help
+
+
+
+
